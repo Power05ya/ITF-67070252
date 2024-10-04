@@ -4,6 +4,7 @@
 body{
     background-image: url(back.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
 }
 .powie{
     flex-direction: row;
@@ -15,7 +16,7 @@ body{
     display: flex;
     justify-content: center;
     font-weight: 300px;
-    font-size: 40px;
+    font-size: 80px;
     font-family: cursive;
     text-shadow: 2px 4px 6px red;
     padding: 15px 10px;
