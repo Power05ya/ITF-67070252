@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="pro.css">
+</head>
+<body>
+    <div class="profile" id="profile">
+        <div class="notify">
+            <p>1</p>
+        </div>
+    </div>
+    <div class="set">
+        <h1 id="username">Username, hi</h1>
+    </div>
+    <div class="move-name">
+        <label>Set username</label><input id="input-name"type="text"> <button onclick="setName()">Set</button>
+    </div>
+    <div class="move-url">
+        <label>Set url</label> <input id="input-url"type="text"> <button onclick="setImg()">Set</button>
+    </div>
+    
+    <div class="move-add">
+        <input id="newword1"type="text">
+        <input id="newword2"type="text">
+        <button onclick="setadd()">add</button><button onclick="saveCSV()">Export</button>
+    </div>
+    <div class="move-ta">
+        <table id="table">
+            <tr>
+                <th>name</th>
+                <th>phone</th>
+            </tr>
+        </table>
+    </div>
+    <script>
+        const name = document.getElementById("username");
+        const inputname = document.getElementById("input-name");
+        const profile = document.getElementById("profile");
+        const url = document.getElementById("input-url");
+        const table = document.getElementById("table");
+        const words1 = document.getElementById("newword1");
+        const words2 = document.getElementById("newword2");
+
+        function setName(){
+            name.textContent = inputname.value + ", Hello";
+            inputname.value = "";
+        }
+        function setImg(){
+            profile.style.backgroundImage = "url(" + url.value + ")";
+            url.value = "";
+        }
+        function setadd(){
+            const row = document.createElement("tr");
+            const cell1 = document.createElement("td");
+            const cell2 = document.createElement("td");
+            cell1.textContent = words1.value
+            words1.value = "";
+            cell2.textContent = words2.value
+            words2.value = "";
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            table.appendChild(row);
+        }
+        function saveCSV(){
+            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "data.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+    </script>
+</body>
+</html>

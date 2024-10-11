@@ -1,0 +1,46 @@
+.profile{
+    width: 300px;
+    height: 300px;
+    left: 310px;
+    background-image: url(https://th.bing.com/th?id=OIP.ZvQQWTcYO_8Keh70LRjUIAHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&cb=13&pid=3.1&rm=2);
+    background-size: cover;
+    border-radius: 50%;
+    position: relative;
+}
+.notify{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    right: 35px;
+}
+.set{
+    display: flex;
+    justify-content: center;
+}
+.move-name{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+.move-url{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+.move-add{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    
+}
+.move-ta{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
