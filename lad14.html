@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="pro.css">
 </head>
 <body>
+    <div class="Back"> <a href="index.html"> <button>BACK</button> </a></div>
     <div class="profile" id="profile">
         <div class="notify">
             <p>1</p>
@@ -16,22 +17,25 @@
         <h1 id="username">Username, hi</h1>
     </div>
     <div class="move-name">
-        <label>Set username</label><input id="input-name"type="text"> <button onclick="setName()">Set</button>
-    </div>
+        <label>Set username</label> <input id="input-name"type="text"> <button onclick="setName()">Set</button>
+    </div><br>
     <div class="move-url">
-        <label>Set url</label> <input id="input-url"type="text"> <button onclick="setImg()">Set</button>
-    </div>
-    
+        <label>Set url</label>  <input id="input-url"type="text"> <button onclick="setImg()">Set</button>
+    </div><br>
+    <div class="list">
+        <label>Phone Number List</label>
+    </div><br>
     <div class="move-add">
         <input id="newword1"type="text">
         <input id="newword2"type="text">
-        <button onclick="setadd()">add</button><button onclick="saveCSV()">Export</button>
-    </div>
+        <button onclick="setadd()">add</button>  <button onclick="saveCSV()">Export</button>
+    </div><br>
     <div class="move-ta">
         <table id="table">
             <tr>
-                <th>name</th>
-                <th>phone</th>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Phone</th>
             </tr>
         </table>
     </div>
@@ -44,6 +48,8 @@
         const words1 = document.getElementById("newword1");
         const words2 = document.getElementById("newword2");
 
+        const phoneData = [];
+
         function setName(){
             name.textContent = inputname.value + ", Hello";
             inputname.value = "";
@@ -52,20 +58,25 @@
             profile.style.backgroundImage = "url(" + url.value + ")";
             url.value = "";
         }
+        let count = 1;
         function setadd(){
             const row = document.createElement("tr");
+            const cell0 = document.createElement("td");
             const cell1 = document.createElement("td");
             const cell2 = document.createElement("td");
+            cell0.textContent = count;
+            count++;
             cell1.textContent = words1.value
             words1.value = "";
             cell2.textContent = words2.value
             words2.value = "";
+            row.appendChild(cell0);
             row.appendChild(cell1);
             row.appendChild(cell2);
             table.appendChild(row);
         }
         function saveCSV(){
-            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const csvContent = phoneData.map(row => row.join(",")).join("\n");
             const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
             const link = document.createElement("a");
             const url = URL.createObjectURL(blob);
